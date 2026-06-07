@@ -46,16 +46,16 @@ export default function Login() {
             </span>
           </div>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 700, color: 'var(--text)', lineHeight: 1.15, letterSpacing: '-.04em', marginBottom: 20 }}>
-            Aprende más<br />
-            <span style={{ color: 'var(--brand)' }}>con IA</span>
+            Sistema de Gestión<br />
+            <span style={{ color: 'var(--brand)' }}>del Aprendizaje</span>
           </h1>
           <p style={{ fontSize: 15, color: 'var(--text2)', lineHeight: 1.7, maxWidth: 360 }}>
-            Plataforma educativa inteligente de la Universidad Tecnológica de Cancún. Pregunta, estudia y genera exámenes con tus propios materiales.
+            Plataforma educativa institucional de la Universidad Tecnológica de Cancún. Administra tus materiales, consultas y autoevaluacionesen un solo lugar.
           </p>
         </div>
 
         <div style={{ position: 'relative', display: 'flex', gap: 20 }}>
-          {[['i ti-file-text', 'PDFs vectorizados', 'Sube tus materiales'], ['i ti-messages', 'Chat IA', 'Pregunta libremente'], ['i ti-clipboard-check', 'Exámenes', 'Genera con IA']].map(([icon, title, sub]) => (
+          {[['i ti-file-text', 'Bibliografía', 'Tus materiales'], ['i ti-messages', 'Tutoría', 'Consultas online'], ['i ti-clipboard-check', 'Exámenes', 'Mide tu progreso']].map(([icon, title, sub]) => (
             <div key={title} style={{ flex: 1, background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: '14px' }}>
               <i className={`ti ${icon.split(' ')[1]}`} style={{ fontSize: 20, color: 'var(--brand)', display: 'block', marginBottom: 8 }} />
               <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{title}</div>

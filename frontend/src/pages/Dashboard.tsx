@@ -125,7 +125,7 @@ export default function Dashboard() {
         <div className="card-head"><span className="card-title">Acceso rápido</span></div>
         <div className="card-body" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 8 }}>
           {[
-            { icon: 'ti-messages', color: 'var(--teal)', label: 'Chat IA', action: () => classes[0] && nav(`/classes/${classes[0].id}/chat`) },
+            { icon: 'ti-messages', color: 'var(--teal)', label: 'Consultas', action: () => classes[0] && nav(`/classes/${classes[0].id}/chat`) },
             { icon: 'ti-cards', color: 'var(--violet)', label: 'Flashcards', action: () => nav('/flashcards') },
             { icon: 'ti-file-description', color: 'var(--brand)', label: 'Resúmenes', action: () => nav('/summaries') },
             { icon: 'ti-clipboard-check', color: 'var(--rose)', label: 'Exámenes', action: () => nav('/exams') },

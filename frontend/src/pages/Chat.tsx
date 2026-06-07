@@ -147,11 +147,11 @@ export default function Chat() {
         <div style={{ flex: 1 }}>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 700, color: 'var(--text)' }}>{cls?.name}</div>
           <div style={{ fontSize: 12, color: 'var(--text3)' }}>
-            Chat IA · {selected.length} doc{selected.length !== 1 ? 's' : ''} · Streaming {streamEnabled ? 'activado' : 'desactivado'}
+            Tutoría · {selected.length} doc{selected.length !== 1 ? 's' : ''} · Streaming {streamEnabled ? 'activado' : 'desactivado'}
           </div>
         </div>
         <button className="btn btn-primary btn-sm" onClick={() => nav('/exams', { state: { classId, documentIds: selected } })}>
-          <i className="ti ti-sparkles" /> Generar examen
+          <i className="ti ti-wand" /> Generar examen
         </button>
         <button className="btn btn-ghost btn-sm" onClick={() => nav(`/flashcards`)}>
           <i className="ti ti-cards" /> Flashcards

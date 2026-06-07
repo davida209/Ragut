@@ -179,7 +179,7 @@ body {
   overflow: hidden;
   transition: border-color .2s;
 }
-.card:hover { border-color: var(--border2); }
+.card:hover { border-color: var(--border2); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04); transform: translateY(-1px); }
 .card-head {
   padding: 14px 18px;
   border-bottom: 1px solid var(--border);
@@ -205,7 +205,7 @@ body {
   background: var(--brand);
   color: #FFFFFF;
 }
-.btn-primary:hover { background: var(--brand2); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--brand2); transform: translateY(-1px); box-shadow: 0 4px 6px -1px rgba(37,99,235,0.3); }
 .btn-secondary {
   background: var(--bg3);
   color: var(--text2);

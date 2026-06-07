@@ -48,10 +48,10 @@ export default function Exams() {
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 28 }}>
         <div>
           <div className="page-title">Exámenes</div>
-          <div className="page-sub" style={{ marginBottom: 0 }}>Oficiales, prácticas personales y repasos generados con IA</div>
+          <div className="page-sub" style={{ marginBottom: 0 }}>Oficiales, prácticas personales y repasos generados automáticamente</div>
         </div>
         <button className="btn btn-primary" onClick={() => { setShowGen(true); setErr('') }}>
-          <i className="ti ti-sparkles" /> Generar con IA
+          <i className="ti ti-wand" /> Generar evaluación
         </button>
       </div>
 
@@ -61,7 +61,7 @@ export default function Exams() {
            <i className="ti ti-clipboard-x" />
            <p>No hay exámenes todavía</p>
            <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => setShowGen(true)}>
-             <i className="ti ti-sparkles" /> Generar el primero
+             <i className="ti ti-wand" /> Generar el primero
            </button>
          </div>
        ) : (
@@ -97,7 +97,7 @@ export default function Exams() {
         <div className="modal-overlay" onClick={() => setShowGen(false)}>
           <div className="modal" style={{ maxWidth: 520 }} onClick={e => e.stopPropagation()}>
             <div className="modal-head">
-              <span className="modal-title"><i className="ti ti-sparkles" style={{ color: 'var(--brand)', marginRight: 8 }} />Generar examen con IA</span>
+              <span className="modal-title"><i className="ti ti-wand" style={{ color: 'var(--brand)', marginRight: 8 }} />Generar examen</span>
               <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', fontSize: 18 }} onClick={() => setShowGen(false)}><i className="ti ti-x" /></button>
             </div>
             <div className="modal-body">
@@ -146,7 +146,7 @@ export default function Exams() {
             <div className="modal-foot">
               <button className="btn btn-ghost" onClick={() => setShowGen(false)}>Cancelar</button>
               <button className="btn btn-primary" onClick={generate} disabled={generating}>
-                {generating ? <><div className="spinner" style={{ width: 14, height: 14, borderTopColor: '#000' }} />Generando...</> : <><i className="ti ti-sparkles" />Generar</>}
+                {generating ? <><div className="spinner" style={{ width: 14, height: 14, borderTopColor: '#000' }} />Generando...</> : <><i className="ti ti-wand" />Generar</>}
               </button>
             </div>
           </div>

@@ -181,10 +181,10 @@ export default function Flashcards() {
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 24 }}>
         <div>
           <div className="page-title">Flashcards</div>
-          <div className="page-sub" style={{ marginBottom: 0 }}>Repasa tus documentos con tarjetas generadas por IA</div>
+          <div className="page-sub" style={{ marginBottom: 0 }}>Repasa tus documentos con tarjetas generadas a partir de tus documentos</div>
         </div>
         <button className="btn btn-primary" onClick={() => { setShowGen(true); setErr('') }}>
-          <i className="ti ti-sparkles" /> Generar flashcards
+          <i className="ti ti-wand" /> Generar flashcards
         </button>
       </div>
 
@@ -204,7 +204,7 @@ export default function Flashcards() {
            <i className="ti ti-cards" />
            <p>No hay flashcards para esta clase</p>
            <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => setShowGen(true)}>
-             <i className="ti ti-sparkles" /> Generar el primero
+             <i className="ti ti-wand" /> Generar el primero
            </button>
          </div>
        ) : (
@@ -273,7 +273,7 @@ export default function Flashcards() {
         <div className="modal-overlay" onClick={() => setShowGen(false)}>
           <div className="modal" onClick={e => e.stopPropagation()}>
             <div className="modal-head">
-              <span className="modal-title"><i className="ti ti-sparkles" style={{ color: 'var(--brand)', marginRight: 8 }} />Generar Flashcards</span>
+              <span className="modal-title"><i className="ti ti-wand" style={{ color: 'var(--brand)', marginRight: 8 }} />Generar Flashcards</span>
               <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text3)', fontSize: 18 }} onClick={() => setShowGen(false)}><i className="ti ti-x" /></button>
             </div>
             <div className="modal-body">
@@ -305,7 +305,7 @@ export default function Flashcards() {
             <div className="modal-foot">
               <button className="btn btn-ghost" onClick={() => setShowGen(false)}>Cancelar</button>
               <button className="btn btn-primary" onClick={generate} disabled={generating}>
-                {generating ? <><div className="spinner" style={{ width: 14, height: 14, borderTopColor: '#000' }} />Generando...</> : <><i className="ti ti-sparkles" />Generar</>}
+                {generating ? <><div className="spinner" style={{ width: 14, height: 14, borderTopColor: '#000' }} />Generando...</> : <><i className="ti ti-wand" />Generar</>}
               </button>
             </div>
           </div>
