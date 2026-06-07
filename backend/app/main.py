@@ -12,8 +12,10 @@ app = FastAPI(title="RagUT API", version="2.0.0", docs_url="/docs")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL, "http://localhost:5173", "http://localhost:3000"],
-    allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
+    allow_origins=["https://ragut.vercel.app"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 for r in [auth.router, classes.router, documents.router, query.router,
