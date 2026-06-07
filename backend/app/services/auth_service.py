@@ -1,37 +1,24 @@
-from datetime import datetime, timedelta
-from typing import Optional
-from jose import JWTError, jwt
-from passlib.context import CryptContext
+import bcrypt
 from sqlalchemy.orm import Session
-from app.core.config import settings
+from typing import Optional
 from app.models.models import User, UserRole
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 def hash_password(p: str) -> str:
-    # Truncar a 72 caracteres porque bcrypt no admite contraseñas más largas
-    return pwd_context.hash(p[:72])
+    # Truncar a 72 bytes según límite de bcrypt
+    pwd_bytes = p.encode('utf-8')[:72]
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(pwd_bytes, salt)
+    return hashed.decode('utf-8')
 
 def verify_password(plain: str, hashed: str) -> bool:
-    # Truncar el input para que coincida con el hash generado
-    return pwd_context.verify(plain[:72], hashed)
+    pwd_bytes = plain.encode('utf-8')[:72]
+    return bcrypt.checkpw(pwd_bytes, hashed.encode('utf-8'))
 
-def create_access_token(data: dict):
-    to_encode = data.copy()
-    to_encode.update({"exp": datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES), "type": "access"})
-    return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+def get_user_by_email(db: Session, email: str): 
+    return db.query(User).filter(User.email == email).first()
 
-def create_refresh_token(data: dict):
-    to_encode = data.copy()
-    to_encode.update({"exp": datetime.utcnow() + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS), "type": "refresh"})
-    return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
-
-def decode_token(token: str) -> Optional[dict]:
-    try: return jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-    except JWTError: return None
-
-def get_user_by_email(db: Session, email: str): return db.query(User).filter(User.email == email).first()
-def get_user_by_id(db: Session, uid: str): return db.query(User).filter(User.id == uid).first()
+def get_user_by_id(db: Session, uid: str): 
+    return db.query(User).filter(User.id == uid).first()
 
 def authenticate_user(db: Session, email: str, password: str) -> Optional[User]:
     user = get_user_by_email(db, email)
@@ -41,5 +28,7 @@ def authenticate_user(db: Session, email: str, password: str) -> Optional[User]:
 
 def create_user(db: Session, email: str, full_name: str, password: str, role: UserRole = UserRole.student) -> User:
     user = User(email=email, full_name=full_name, hashed_password=hash_password(password), role=role)
-    db.add(user); db.commit(); db.refresh(user)
+    db.add(user)
+    db.commit()
+    db.refresh(user)
     return user
