@@ -24,7 +24,7 @@ export default function Login() {
     }}>
       {/* Left — branding panel */}
       <div style={{
-        background: 'linear-gradient(135deg, #1A1400 0%, #0D0D0F 60%)',
+        background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 60%)',
         display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
         padding: '48px', position: 'relative', overflow: 'hidden',
         borderRight: '1px solid var(--border)'
@@ -32,11 +32,11 @@ export default function Login() {
         {/* Grid pattern */}
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: 'linear-gradient(rgba(232,168,56,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(232,168,56,.04) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(37,99,235,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.08) 1px, transparent 1px)',
           backgroundSize: '40px 40px'
         }} />
         {/* Glow */}
-        <div style={{ position: 'absolute', top: '30%', left: '20%', width: 300, height: 300, background: 'radial-gradient(circle, rgba(232,168,56,.12) 0%, transparent 70%)', borderRadius: '50%' }} />
+        <div style={{ position: 'absolute', top: '30%', left: '20%', width: 300, height: 300, background: 'radial-gradient(circle, rgba(37,99,235,.15) 0%, transparent 70%)', borderRadius: '50%' }} />
 
         <div style={{ position: 'relative' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 64 }}>
@@ -56,7 +56,7 @@ export default function Login() {
 
         <div style={{ position: 'relative', display: 'flex', gap: 20 }}>
           {[['i ti-file-text', 'PDFs vectorizados', 'Sube tus materiales'], ['i ti-messages', 'Chat IA', 'Pregunta libremente'], ['i ti-clipboard-check', 'Exámenes', 'Genera con IA']].map(([icon, title, sub]) => (
-            <div key={title} style={{ flex: 1, background: 'rgba(255,255,255,.04)', border: '1px solid var(--border)', borderRadius: 12, padding: '14px' }}>
+            <div key={title} style={{ flex: 1, background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 12, padding: '14px' }}>
               <i className={`ti ${icon.split(' ')[1]}`} style={{ fontSize: 20, color: 'var(--brand)', display: 'block', marginBottom: 8 }} />
               <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text)', marginBottom: 2 }}>{title}</div>
               <div style={{ fontSize: 11, color: 'var(--text3)' }}>{sub}</div>
