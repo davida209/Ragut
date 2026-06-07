@@ -15,3 +15,5 @@ httpx
 pgvector
 numpy
 pydantic-settings
+email-validator
+pydantic[email]
