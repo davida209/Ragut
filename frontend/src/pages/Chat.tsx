@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone'
 import { useAuthStore } from '../store/auth'
 import api from '../api/client'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_URL = import.meta.env.VITE_API_URL || 'https://ragut-1.onrender.com'
 
 export default function Chat() {
   const { classId } = useParams()
