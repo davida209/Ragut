@@ -1,6 +1,9 @@
 import bcrypt
-from sqlalchemy.orm import Session
+from datetime import datetime, timedelta
 from typing import Optional
+from jose import JWTError, jwt
+from sqlalchemy.orm import Session
+from app.core.config import settings
 from app.models.models import User, UserRole
 
 def hash_password(p: str) -> str:
@@ -13,6 +16,20 @@ def hash_password(p: str) -> str:
 def verify_password(plain: str, hashed: str) -> bool:
     pwd_bytes = plain.encode('utf-8')[:72]
     return bcrypt.checkpw(pwd_bytes, hashed.encode('utf-8'))
+
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    to_encode.update({"exp": datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES), "type": "access"})
+    return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+
+def create_refresh_token(data: dict):
+    to_encode = data.copy()
+    to_encode.update({"exp": datetime.utcnow() + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS), "type": "refresh"})
+    return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+
+def decode_token(token: str) -> Optional[dict]:
+    try: return jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+    except JWTError: return None
 
 def get_user_by_email(db: Session, email: str): 
     return db.query(User).filter(User.email == email).first()
